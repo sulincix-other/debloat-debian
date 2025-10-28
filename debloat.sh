@@ -10,8 +10,16 @@ for p in ${packages[@]} ; do
         bloat+=("$p")
     fi
 done
+is_gnome=false
+if dpkg -s gnome-core; then
+    is_gnome=true
+fi
 # remove bloats
-apt purge ${bloat[@]} --autoremove
+apt purge ${bloat[@]} --autoremove -y
 for script in libreoffice nosystemd gnome ; do
     curl -L "$src"/script/"$script".sh | bash
 done
+if [[ "${is_gnome}" == "true" ; then
+    # fix gnome-core
+    apt install gnome-core --no-install-recommends -y
+fi
