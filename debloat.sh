@@ -11,7 +11,7 @@ for p in ${packages[@]} ; do
     fi
 done
 hold=()
-hold_list=(xfce4 gnome-core)
+hold_list=(xfce4 gnome-core network-manager)
 for p in ${hold_list[@]} ; do
     if dpkg -s "$p" 2>/dev/null; then
         hold+=($p)
