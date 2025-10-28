@@ -1,1 +1,0 @@
-apt purge pardus* -y

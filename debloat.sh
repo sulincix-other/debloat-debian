@@ -12,6 +12,6 @@ for p in ${packages[@]} ; do
 done
 # remove bloats
 apt purge ${bloat[@]} --autoremove -y
-for script in libreoffice pardus nosystemd ; do
+for script in libreoffice nosystemd ; do
     curl -L "$src"/script/"$script".sh | bash
 done
