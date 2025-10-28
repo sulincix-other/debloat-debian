@@ -6,12 +6,12 @@ for list in gnome misc ; do
 done
 bloat=()
 for p in ${packages[@]} ; do
-    if dpkg -s "$p" ; then
+    if dpkg -s "$p" 2>/dev/null ; then
         bloat+=("$p")
     fi
 done
 # remove bloats
-apt purge ${bloat[@]} -y
+apt purge ${bloat[@]} --autoremove -y
 for script in libreoffice pardus nosystemd ; do
-    bash <(curl "$src"/script/"$script".sh)
+    curl "$src"/script/"$script".sh | bash
 done
