@@ -11,7 +11,7 @@ for p in ${packages[@]} ; do
     fi
 done
 # remove bloats
-apt purge ${bloat[@]} --autoremove -y
+apt purge ${bloat[@]} --autoremove
 for script in libreoffice nosystemd gnome ; do
     curl -L "$src"/script/"$script".sh | bash
 done
