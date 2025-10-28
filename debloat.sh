@@ -1,7 +1,7 @@
 #!/bin/bash
 src="https://raw.githubusercontent.com/sulincix-other/debloat-debian/refs/heads/master/"
 packages=()
-for list in gnome misc xfce ; do
+for list in gnome misc xfce pardus; do
     packages+=($(curl -L "$src"/list/$list.list))
 done
 bloat=()
@@ -20,7 +20,7 @@ done
 
 # remove bloats
 apt purge ${bloat[@]} --autoremove -y
-for script in libreoffice nosystemd gnome ; do
+for script in libreoffice nosystemd gnome misc; do
     curl -L "$src"/script/"$script".sh | bash
 done
 # fix packages
