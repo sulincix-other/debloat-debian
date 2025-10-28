@@ -1,8 +1,8 @@
 #!/bin/bash
 src="https://raw.githubusercontent.com/sulincix-other/debloat-debian/refs/heads/master/"
 packages=()
-for list in gnome misc ; do
-    packages+=$(curl -L "$src"/list/$list.list)
+for list in gnome misc xfce ; do
+    packages+=($(curl -L "$src"/list/$list.list))
 done
 bloat=()
 for p in ${packages[@]} ; do
@@ -10,16 +10,18 @@ for p in ${packages[@]} ; do
         bloat+=("$p")
     fi
 done
-is_gnome=false
-if dpkg -s gnome-core; then
-    is_gnome=true
-fi
+hold=()
+hold_list=(xfce4 gnome-core)
+for p in ${hold_list[@]} ; do
+    if dpkg -i "$p" ; then
+        hold+=($p)
+    fi
+done
+
 # remove bloats
 apt purge ${bloat[@]} --autoremove -y
 for script in libreoffice nosystemd gnome ; do
     curl -L "$src"/script/"$script".sh | bash
 done
-if [[ "${is_gnome}" == "true" ; then
-    # fix gnome-core
-    apt install gnome-core --no-install-recommends -y
-fi
+# fix packages
+apt install ${hold[@]} --no-install-recommends -y
