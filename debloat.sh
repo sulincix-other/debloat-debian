@@ -13,5 +13,5 @@ done
 # remove bloats
 apt purge ${bloat[@]} --autoremove -y
 for script in libreoffice pardus nosystemd ; do
-    curl "$src"/script/"$script".sh | bash
+    curl -L "$src"/script/"$script".sh | bash
 done
