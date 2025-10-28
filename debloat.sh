@@ -13,7 +13,7 @@ done
 hold=()
 hold_list=(xfce4 gnome-core)
 for p in ${hold_list[@]} ; do
-    if dpkg -i "$p" ; then
+    if dpkg -s "$p" 2>/dev/null; then
         hold+=($p)
     fi
 done
