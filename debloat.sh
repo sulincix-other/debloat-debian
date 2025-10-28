@@ -1,6 +1,9 @@
 #!/bin/bash
 src="https://raw.githubusercontent.com/sulincix-other/debloat-debian/refs/heads/master/"
-packages=$(curl -L "$src"/gnome.list)
+packages=()
+for list in gnome misc ; do
+    packages+=$(curl -L "$src"/list/$list.list)
+done
 bloat=()
 for p in ${packages[@]} ; do
     if dpkg -s "$p" ; then
@@ -9,5 +12,6 @@ for p in ${packages[@]} ; do
 done
 # remove bloats
 apt purge ${bloat[@]} -y
-apt purge libreoffice-* -y
-bash <(curl "$src"/nosystemd.sh)
+for script in libreoffice pardus nosystemd ; do
+    bash <(curl "$src"/script/"$script".sh)
+done
