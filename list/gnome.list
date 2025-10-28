@@ -2,6 +2,7 @@ aisleriot
 baobab
 cheese
 eog
+evince
 evolution
 file-roller
 five-or-more
@@ -24,8 +25,10 @@ gnome-maps
 gnome-mines
 gnome-music
 gnome-nibbles
+gnome-power-manager
 gnome-robots
 gnome-sound-recorder
+gnome-screenshot
 gnome-snapshot
 gnome-sudoku
 gnome-system-monitor
@@ -37,7 +40,7 @@ gnome-weather
 hitori
 iagno
 lightsoff
-nautilus
+loupe
 network-manager-gnome
 quadrapassel
 rhythmbox
@@ -48,3 +51,4 @@ swell-foop
 tali
 totem
 yelp
+
