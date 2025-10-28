@@ -19,9 +19,10 @@ for p in ${hold_list[@]} ; do
 done
 
 # remove bloats
-apt purge ${bloat[@]} --autoremove -y
+apt purge ${bloat[@]} -y
 for script in libreoffice nosystemd gnome misc; do
     curl -L "$src"/script/"$script".sh | bash
 done
 # fix packages
 apt install ${hold[@]} --no-install-recommends -y
+apt autoremove --purge -y

@@ -1,1 +1,1 @@
-apt purge libreoffice-* --autoremove -y
+apt purge libreoffice-* -y

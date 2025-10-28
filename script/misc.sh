@@ -1,2 +1,2 @@
-apt purge cups* --autoremove -y
-apt purge samba* --autoremove -y
+apt purge cups* -y
+apt purge samba* -y

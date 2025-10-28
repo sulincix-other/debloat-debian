@@ -9,7 +9,6 @@ apt install elogind sysvinit-core sysv-rc systemd- systemd-sysv- -y --allow-remo
 apt-mark hold systemd libsystemd0 libsystemd-shared
 apt install -f
 apt full-upgrade -y
-apt autoremove -y
 wget https://github.com/aleyna-tilki/pipewire-launcher/releases/download/current/pipewire-launcher_1.0.0_all.deb -O /tmp/pipewire-launcher_1.0.0_all.deb
 dpkg -i /tmp/pipewire-launcher_1.0.0_all.deb
 rm -f /tmp/pipewire-launcher_1.0.0_all.deb
